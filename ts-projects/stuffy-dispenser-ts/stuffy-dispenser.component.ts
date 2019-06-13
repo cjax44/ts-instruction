@@ -1,79 +1,44 @@
 import {Stuffy} from "./model/stuffy.class";
+import {StuffyService} from "./stuffy.service";
 
+export class StuffyComponent {
+    stuffySvc: StuffyService;
 
-let stuffies: Stuffy[] = [];
+    constructor(stuffySvc: StuffyService) {
+        this.stuffySvc = stuffySvc;
+    }
+}
+
+let stuffyComp = new StuffyComponent(new StuffyService());
+// let stuffies: Stuffy[] = [];
 // initalize the list 
 
-initializeList();
+stuffyComp.stuffySvc.initializeList();
 
 // display the list of stuffies
 
-listStuffies();
+stuffyComp.stuffySvc.listStuffies();
 
 // get a stuffy by id
 
 let id: number = 3;
-getStuffy(id);
+stuffyComp.stuffySvc.getStuffy(id);
 
 // add a new stuffy
 
+console.log("add...")
 let newStuffy: Stuffy = new Stuffy(6, "Elephant", "Hot Pink", "Small", 4);
-addStuffy(newStuffy);
+stuffyComp.stuffySvc.addStuffy(newStuffy);
+stuffyComp.stuffySvc.listStuffies();
 
 // remove stuffy by ID
 
+console.log("remove...")
 id = 2;
-removeByID(id);
+stuffyComp.stuffySvc.removeByID(id);
+stuffyComp.stuffySvc.listStuffies();
 
 
-function initializeList() {
-
-    //initialize 
-    let s1: Stuffy = new Stuffy(1, "Dog", "Red", "X-Large", 4);
-    let s2: Stuffy = new Stuffy(2, "Cow", "Orange", "Medium", 4);
-    let s3: Stuffy = new Stuffy(3, "Dragon", "Purlpe", "Medium", 6);
-    let s4: Stuffy = new Stuffy(4, "Mantis Shrimp", "Rainbow", "X-Small", 12);
-    let s5: Stuffy = new Stuffy(5, "Octopus", "Pink", "Large", 8);
-
-    stuffies = [s1, s2, s3, s4, s5];
-    
-}
-
-function listStuffies() {
-    stuffies.forEach(s => {
-        console.log(s.about());
-    });
-}
-
-function getStuffy(id: number) {
-    // instead of using optionals in stuffy constructor on stuffy.class I used a generic default of 0
-    let stuffy: Stuffy = new Stuffy(0, "na", "na", "na", 0);
-    stuffies.forEach(s => {
-        if (s.id == id) {
-            stuffy = s; 
-        }
-    });
-    if (stuffy.id == 0) {
-        console.log("No stuffy found for ID: " + id);
-    } else {
-        console.log("Found your stuffy: "+stuffy.about());
-    }
-
-}
-
-function addStuffy(newStuffy: Stuffy) {
-    stuffies.push(newStuffy);
-}
-
-function removeByID(id: number) {
-    console.log("Remove a stuffy...");
-    stuffies.forEach(s => {
-        if (s.id == id) {
-            let idx: number = stuffies.indexOf(s);
-            stuffies.splice(idx,1);
-        }
-    });
-}
 
 // IGNORE EVERYTHING BELOW THIS POINT ------------------------
 

@@ -1,22 +1,80 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var stuffy_class_1 = require("./model/stuffy.class");
-var s1 = new stuffy_class_1.Stuffy(1, "Dog", "Red", "X-Large", 4);
-var s2 = new stuffy_class_1.Stuffy(2, "Cow", "Orange", "Medium", 4);
-var s3 = new stuffy_class_1.Stuffy(3, "Dragon", "Purlpe", "Medium", 6);
-var s4 = new stuffy_class_1.Stuffy(4, "Mantis Shrimp", "Rainbow", "X-Small", 12);
-var s5 = new stuffy_class_1.Stuffy(5, "Octopus", "Pink", "Large", 8);
-var stuffies = [s1, s2, s3, s4, s5];
-console.log("Stuffy old school array");
-for (var i = 0; i < stuffies.length; i++) {
-    console.log(stuffies[i].about());
-}
-console.log("Stuffy enhanced for array");
-for (var _i = 0, stuffies_1 = stuffies; _i < stuffies_1.length; _i++) {
-    var s = stuffies_1[_i];
-    console.log(s.about());
-}
-console.log("Stuffy forEach array");
-stuffies.forEach(function (s) {
-    console.log(s.about());
-});
+var stuffy_service_1 = require("./stuffy.service");
+var StuffyComponent = /** @class */ (function () {
+    function StuffyComponent(stuffySvc) {
+        this.stuffySvc = stuffySvc;
+    }
+    return StuffyComponent;
+}());
+exports.StuffyComponent = StuffyComponent;
+var stuffyComp = new StuffyComponent(new stuffy_service_1.StuffyService());
+// let stuffies: Stuffy[] = [];
+// initalize the list 
+stuffyComp.stuffySvc.initializeList();
+// display the list of stuffies
+stuffyComp.stuffySvc.listStuffies();
+// get a stuffy by id
+var id = 3;
+stuffyComp.stuffySvc.getStuffy(id);
+// add a new stuffy
+console.log("add...");
+var newStuffy = new stuffy_class_1.Stuffy(6, "Elephant", "Hot Pink", "Small", 4);
+stuffyComp.stuffySvc.addStuffy(newStuffy);
+stuffyComp.stuffySvc.listStuffies();
+// remove stuffy by ID
+console.log("remove...");
+id = 2;
+stuffyComp.stuffySvc.removeByID(id);
+stuffyComp.stuffySvc.listStuffies();
+// IGNORE EVERYTHING BELOW THIS POINT ------------------------
+// -----------------------------------------------------------
+// BELOW----THE FIRST ITERATION-----COMMENTED OUT FOR HISTORY-
+// -----------------------------------------------------------
+// ------------------LEARNING HAPPENED------------------------
+// -----------------------------------------------------------
+// list our stuffies 3 different ways ------------------------
+// -----------------------------------------------------------
+// console.log("Stuffy old school array");
+// for (let i: number = 0; i<stuffies.length; i++) {
+//     console.log(stuffies[i].about());
+// }
+// console.log("Stuffy enhanced for array");
+// for (let s of stuffies) {
+//     console.log(s.about());
+// }
+// console.log("Stuffy forEach array");
+// stuffies.forEach(s => {
+//     console.log(s.about());
+// });
+// get a stuffy by ID
+// ----------------------------------
+// console.log("Get a stuffy by ID");
+// let id: number = 3;
+// let stuffy: Stuffy = new Stuffy(0, "na", "na", "na", 0);
+// stuffies.forEach(s => {
+//     if (s.id == id) {
+//         stuffy = s;
+//     }
+// });
+// console.log("Found your stuffy: "+stuffy.about());
+// add a new stuffy
+// console.log("add a new stuffy...");
+// let newStuffy: Stuffy = new Stuffy(6, "Elephant", "Hot Pink", "Small", 4);
+// stuffies.splice(2,0,newStuffy);
+// stuffies.forEach(s => {
+//     console.log(s.about());
+// });
+// delete a stuffy by ID
+// console.log("Remove a stuffy...");
+// id = 2;
+// stuffies.forEach(s => {
+//     if (s.id == id) {
+//         let idx: number = stuffies.indexOf(s);
+//         stuffies.splice(idx,1);
+//     }
+// });
+// stuffies.forEach(s => {
+//     console.log(s.about());
+// });
