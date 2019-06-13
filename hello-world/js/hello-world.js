@@ -1,4 +1,4 @@
 "use strict";
-var hw = "Hello, world";
-var std = "student";
-console.log(hw, std);
+let hw = "Hello, world";
+let stud = "Chris";
+console.log(hw, stud);
