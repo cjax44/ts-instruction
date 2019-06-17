@@ -2,7 +2,7 @@ import {Stuffy} from "./model/stuffy.class";
 
 export class StuffyService {
     stuffies: Stuffy[] = [];
-    nextId: number = 1;
+    // nextId: number = 1;
 
     initializeList() {
 

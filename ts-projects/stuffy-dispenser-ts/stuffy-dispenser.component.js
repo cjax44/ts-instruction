@@ -2,32 +2,24 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var stuffy_class_1 = require("./model/stuffy.class");
 var stuffy_service_1 = require("./stuffy.service");
-var StuffyComponent = /** @class */ (function () {
-    function StuffyComponent(stuffySvc) {
-        this.stuffySvc = stuffySvc;
-    }
-    return StuffyComponent;
-}());
-exports.StuffyComponent = StuffyComponent;
-var stuffyComp = new StuffyComponent(new stuffy_service_1.StuffyService());
-// let stuffies: Stuffy[] = [];
+var stuffySvc = new stuffy_service_1.StuffyService();
 // initalize the list 
-stuffyComp.stuffySvc.initializeList();
+stuffySvc.initializeList();
 // display the list of stuffies
-stuffyComp.stuffySvc.listStuffies();
+stuffySvc.listStuffies();
 // get a stuffy by id
 var id = 3;
-stuffyComp.stuffySvc.getStuffy(id);
+stuffySvc.getStuffy(id);
 // add a new stuffy
 console.log("add...");
 var newStuffy = new stuffy_class_1.Stuffy(6, "Elephant", "Hot Pink", "Small", 4);
-stuffyComp.stuffySvc.addStuffy(newStuffy);
-stuffyComp.stuffySvc.listStuffies();
+stuffySvc.addStuffy(newStuffy);
+stuffySvc.listStuffies();
 // remove stuffy by ID
 console.log("remove...");
 id = 2;
-stuffyComp.stuffySvc.removeByID(id);
-stuffyComp.stuffySvc.listStuffies();
+stuffySvc.removeByID(id);
+stuffySvc.listStuffies();
 // IGNORE EVERYTHING BELOW THIS POINT ------------------------
 // -----------------------------------------------------------
 // BELOW----THE FIRST ITERATION-----COMMENTED OUT FOR HISTORY-

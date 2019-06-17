@@ -1,42 +1,35 @@
 import {Stuffy} from "./model/stuffy.class";
 import {StuffyService} from "./stuffy.service";
 
-export class StuffyComponent {
-    stuffySvc: StuffyService;
 
-    constructor(stuffySvc: StuffyService) {
-        this.stuffySvc = stuffySvc;
-    }
-}
 
-let stuffyComp = new StuffyComponent(new StuffyService());
-// let stuffies: Stuffy[] = [];
+let stuffySvc: StuffyService = new StuffyService();
 // initalize the list 
 
-stuffyComp.stuffySvc.initializeList();
+stuffySvc.initializeList();
 
 // display the list of stuffies
 
-stuffyComp.stuffySvc.listStuffies();
+stuffySvc.listStuffies();
 
 // get a stuffy by id
 
 let id: number = 3;
-stuffyComp.stuffySvc.getStuffy(id);
+stuffySvc.getStuffy(id);
 
 // add a new stuffy
 
 console.log("add...")
 let newStuffy: Stuffy = new Stuffy(6, "Elephant", "Hot Pink", "Small", 4);
-stuffyComp.stuffySvc.addStuffy(newStuffy);
-stuffyComp.stuffySvc.listStuffies();
+stuffySvc.addStuffy(newStuffy);
+stuffySvc.listStuffies();
 
 // remove stuffy by ID
 
 console.log("remove...")
 id = 2;
-stuffyComp.stuffySvc.removeByID(id);
-stuffyComp.stuffySvc.listStuffies();
+stuffySvc.removeByID(id);
+stuffySvc.listStuffies();
 
 
 
